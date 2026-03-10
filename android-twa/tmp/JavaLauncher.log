@@ -1,0 +1,44 @@
+[2026/02/12 17:08:07.398, java.exe (PID: 3532, TID: 20280), JavaEnvironment.cpp:502 (JavaEnvironment::detect)]
+	TRACE: Entering JavaEnvironment::detect
+[2026/02/12 17:08:07.399, java.exe (PID: 3532, TID: 20280), JavaEnvironment.cpp:519 (JavaEnvironment::detect)]
+	TRACE: Installed Java detected: version=1.8.0_451; arch=64; productCode={71024AE4-039E-4CA4-87B4-2F64180451F0}; type=0
+[2026/02/12 17:08:07.401, java.exe (PID: 3532, TID: 20280), JavaEnvironment.cpp:519 (JavaEnvironment::detect)]
+	TRACE: Installed Java detected: version=1.8.0_471; arch=32; productCode={77924AE4-039E-4CA4-87B4-2F32180471F0}; type=0
+[2026/02/12 17:08:07.413, java.exe (PID: 3532, TID: 20280), JavaEnvironment.cpp:519 (JavaEnvironment::detect)]
+	TRACE: Installed Java detected: version=; arch=64; productCode={DA08718E-972A-58E7-AE7E-C45114C82E13}; type=1
+[2026/02/12 17:08:07.413, java.exe (PID: 3532, TID: 20280), JavaEnvironment.cpp:135 (`anonymous-namespace'::detectHomeDir)]
+	TRACE: Find home dir of {DA08718E-972A-58E7-AE7E-C45114C82E13} Java installation
+[2026/02/12 17:08:07.413, java.exe (PID: 3532, TID: 20280), JavaEnvironment.cpp:302 (`anonymous-namespace'::detectFullVersion)]
+	TRACE: Detect full version of {DA08718E-972A-58E7-AE7E-C45114C82E13} Java installation
+[2026/02/12 17:08:07.414, java.exe (PID: 3532, TID: 20280), JavaEnvironment.cpp:213 (`anonymous-namespace'::detectFullVersionFromMsi)]
+	TRACE: detectFullVersionFromMsi({DA08718E-972A-58E7-AE7E-C45114C82E13})
+[2026/02/12 17:08:07.418, java.exe (PID: 3532, TID: 20280), JavaEnvironment.cpp:481 (`anonymous-namespace'::getInstalledJava)]
+	TRACE: InstalledJava(17.0.12+8|17.0.12+8|JDK|64bit|C:\Program Files\Java\jdk-17|{DA08718E-972A-58E7-AE7E-C45114C82E13}|-10|)
+[2026/02/12 17:08:07.420, java.exe (PID: 3532, TID: 20280), JavaEnvironment.cpp:0 (JavaEnvironment::detect)]
+	TRACE: Exiting JavaEnvironment::detect (entered at JavaEnvironment.cpp:502)
+[2026/02/12 17:08:07.426, java.exe (PID: 3532, TID: 20280), Executor.cpp:706 (Executor2::startProcess)]
+	TRACE: CreateProcess(C:\Program Files\Java\jdk-17\bin\java.exe, "C:\Program Files\Java\jdk-17\bin\java.exe" -version) succeeded; PID=22552
+[2026/02/12 17:08:07.479, java.exe (PID: 3532, TID: 20280), Executor.cpp:667 (Executor2::execAndWait)]
+	TRACE: Process with PID=22552 terminated. Exit code=0
+[2026/02/12 17:08:07.499, java.exe (PID: 22584, TID: 11708), JavaEnvironment.cpp:502 (JavaEnvironment::detect)]
+	TRACE: Entering JavaEnvironment::detect
+[2026/02/12 17:08:07.500, java.exe (PID: 22584, TID: 11708), JavaEnvironment.cpp:519 (JavaEnvironment::detect)]
+	TRACE: Installed Java detected: version=1.8.0_451; arch=64; productCode={71024AE4-039E-4CA4-87B4-2F64180451F0}; type=0
+[2026/02/12 17:08:07.501, java.exe (PID: 22584, TID: 11708), JavaEnvironment.cpp:519 (JavaEnvironment::detect)]
+	TRACE: Installed Java detected: version=1.8.0_471; arch=32; productCode={77924AE4-039E-4CA4-87B4-2F32180471F0}; type=0
+[2026/02/12 17:08:07.507, java.exe (PID: 22584, TID: 11708), JavaEnvironment.cpp:519 (JavaEnvironment::detect)]
+	TRACE: Installed Java detected: version=; arch=64; productCode={DA08718E-972A-58E7-AE7E-C45114C82E13}; type=1
+[2026/02/12 17:08:07.508, java.exe (PID: 22584, TID: 11708), JavaEnvironment.cpp:135 (`anonymous-namespace'::detectHomeDir)]
+	TRACE: Find home dir of {DA08718E-972A-58E7-AE7E-C45114C82E13} Java installation
+[2026/02/12 17:08:07.508, java.exe (PID: 22584, TID: 11708), JavaEnvironment.cpp:302 (`anonymous-namespace'::detectFullVersion)]
+	TRACE: Detect full version of {DA08718E-972A-58E7-AE7E-C45114C82E13} Java installation
+[2026/02/12 17:08:07.510, java.exe (PID: 22584, TID: 11708), JavaEnvironment.cpp:213 (`anonymous-namespace'::detectFullVersionFromMsi)]
+	TRACE: detectFullVersionFromMsi({DA08718E-972A-58E7-AE7E-C45114C82E13})
+[2026/02/12 17:08:07.514, java.exe (PID: 22584, TID: 11708), JavaEnvironment.cpp:481 (`anonymous-namespace'::getInstalledJava)]
+	TRACE: InstalledJava(17.0.12+8|17.0.12+8|JDK|64bit|C:\Program Files\Java\jdk-17|{DA08718E-972A-58E7-AE7E-C45114C82E13}|-10|)
+[2026/02/12 17:08:07.516, java.exe (PID: 22584, TID: 11708), JavaEnvironment.cpp:0 (JavaEnvironment::detect)]
+	TRACE: Exiting JavaEnvironment::detect (entered at JavaEnvironment.cpp:502)
+[2026/02/12 17:08:07.523, java.exe (PID: 22584, TID: 11708), Executor.cpp:706 (Executor2::startProcess)]
+	TRACE: CreateProcess(C:\Program Files\Java\jdk-17\bin\java.exe, "C:\Program Files\Java\jdk-17\bin\java.exe" -Xmx64m -Xms64m -Dorg.gradle.appname=gradlew -classpath C:\Users\pedro.queblas\Desktop\gym\android-twa\\gradle\wrapper\gradle-wrapper.jar org.gradle.wrapper.GradleWrapperMain clean assembleRelease) succeeded; PID=7408
+[2026/02/12 17:08:32.169, java.exe (PID: 22584, TID: 11708), Executor.cpp:667 (Executor2::execAndWait)]
+	TRACE: Process with PID=7408 terminated. Exit code=1

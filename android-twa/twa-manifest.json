@@ -1,0 +1,50 @@
+{
+  "packageId": "app.vercel.gym_tracker_dev_pedroqueblas.twa",
+  "host": "queblasgymapp.vercel.app",
+  "name": "Queblas-GymApp",
+  "launcherName": "Queblas-GymApp",
+  "display": "standalone",
+  "themeColor": "#0D1B2A",
+  "themeColorDark": "#000000",
+  "navigationColor": "#000000",
+  "navigationColorDark": "#000000",
+  "navigationDividerColor": "#000000",
+  "navigationDividerColorDark": "#000000",
+  "backgroundColor": "#0D1B2A",
+  "enableNotifications": true,
+  "startUrl": "/",
+  "iconUrl": "https://img.icons8.com/?size=100&id=jkpvYyGgXRIX&format=png&color=FFFFFF",
+  "maskableIconUrl": "https://img.icons8.com/?size=100&id=jkpvYyGgXRIX&format=png&color=FFFFFF",
+  "monochromeIconUrl": "https://img.icons8.com/?size=100&id=jkpvYyGgXRIX&format=png&color=FFFFFF",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "C:\\Users\\pedro.queblas\\Desktop\\GymTracker\\android-twa\\android.keystore",
+    "alias": "android"
+  },
+  "appVersionName": "4",
+  "appVersionCode": 4,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://queblasgymapp.vercel.app/manifest.json",
+  "fallbackType": "customtabs",
+  "features": {},
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://queblasgymapp.vercel.app/",
+  "minSdkVersion": 21,
+  "orientation": "default",
+  "fingerprints": [
+    "D631E1F555113D98887872EE8ECE3B68BBF5F353E552E30AC0A61E67435C2763"
+  ],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "protocolHandlers": [],
+  "fileHandlers": [],
+  "launchHandlerClientMode": "",
+  "displayOverride": [],
+  "appVersion": "4"
+}
