@@ -76,7 +76,8 @@ export function useUserDataSync() {
       try {
         const uid = user?.uid;
         if (!uid) return;
-        if (auth.currentUser?.uid !== uid) return;
+        // Double check that the user is still logged in before saving
+        if (!auth.currentUser || auth.currentUser.uid !== uid) return;
         // Calculate stats for ranking
         const totalVolume = workoutHistory.reduce((acc, w) => {
           return acc + w.exercises.reduce((exAcc, ex) => {
