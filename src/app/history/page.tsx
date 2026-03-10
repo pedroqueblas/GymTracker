@@ -78,7 +78,15 @@ export default function HistoryPage() {
         </Card>
       ) : (
         <div className="space-y-4">
-          {workoutHistory.map((workout) => (
+          {workoutHistory.map((workout) => {
+            const performedExercises = workout.exercises.filter((ex) =>
+              ex.sets.some((s) => s.completed && s.reps > 0)
+            );
+            const performedNames = performedExercises
+              .map((ex) => getExerciseName(ex.exerciseId))
+              .filter(Boolean);
+
+            return (
             <Card key={workout.id}>
               <CardHeader className="pb-2">
                 <div className="flex justify-between items-start">
@@ -104,7 +112,7 @@ export default function HistoryPage() {
                 <div className="flex gap-4 text-sm text-muted-foreground mb-3">
                   <div className="flex items-center gap-1">
                     <Dumbbell className="h-4 w-4" />
-                    {workout.exercises.length} Exercícios
+                    {performedExercises.length}/{workout.exercises.length} Exercícios feitos
                   </div>
                   {workout.cardio && (
                     <div className="flex items-center gap-1">
@@ -114,10 +122,17 @@ export default function HistoryPage() {
                   )}
                 </div>
 
+                {performedNames.length > 0 && (
+                  <div className="text-xs text-muted-foreground mb-3">
+                    {performedNames.slice(0, 3).join(" • ")}
+                    {performedNames.length > 3 ? ` • +${performedNames.length - 3}` : null}
+                  </div>
+                )}
+
                 <Accordion type="single" collapsible>
                   <AccordionItem value="details" className="border-none">
                     <AccordionTrigger className="py-2 text-sm hover:no-underline text-primary">
-                      Ver detalhes e cargas
+                      Ver exercícios feitos
                     </AccordionTrigger>
                     <AccordionContent>
                       <div className="space-y-3 pt-2">
@@ -131,16 +146,23 @@ export default function HistoryPage() {
                           </div>
                         )}
                         
-                        {workout.exercises.map((ex) => (
-                          <ExerciseDetailItem key={ex.id} log={ex} />
-                        ))}
+                        {performedExercises.length === 0 ? (
+                          <div className="text-sm text-muted-foreground">
+                            Nenhuma série concluída registrada neste treino.
+                          </div>
+                        ) : (
+                          performedExercises.map((ex) => (
+                            <ExerciseDetailItem key={ex.id} log={ex} />
+                          ))
+                        )}
                       </div>
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>
               </CardContent>
             </Card>
-          ))}
+            );
+          })}
         </div>
       )}
     </div>
@@ -148,26 +170,36 @@ export default function HistoryPage() {
 }
 
 function ExerciseDetailItem({ log }: { log: ExerciseLog }) {
-  const exercise = EXERCISES.find(e => e.id === log.exerciseId);
-  const maxWeight = Math.max(...log.sets.map(s => s.weight));
+  const exerciseName = getExerciseName(log.exerciseId);
+  const completedSets = log.sets.filter((s) => s.completed && s.reps > 0);
+  const maxWeight =
+    completedSets.length > 0 ? Math.max(...completedSets.map((s) => s.weight)) : 0;
   
   return (
     <div className="bg-muted/30 p-3 rounded-lg text-sm">
       <div className="flex justify-between font-medium mb-1">
-        <span>{exercise?.name}</span>
+        <span>{exerciseName}</span>
         <span className="text-xs bg-background border px-1.5 rounded flex items-center">
           Max: {maxWeight}kg
         </span>
       </div>
       <div className="flex flex-wrap gap-2">
-        {log.sets.map((set, i) => (
-          <div key={i} className="text-xs text-muted-foreground bg-background px-1.5 py-0.5 rounded border">
-             {set.weight}kg x {set.reps}
+        {completedSets.map((set) => (
+          <div
+            key={set.id}
+            className="text-xs text-muted-foreground bg-background px-1.5 py-0.5 rounded border"
+          >
+            {set.weight}kg x {set.reps}
           </div>
         ))}
       </div>
     </div>
   );
+}
+
+function getExerciseName(exerciseId: string) {
+  const exercise = EXERCISES.find((e) => e.id === exerciseId);
+  return exercise?.name ?? exerciseId;
 }
 
 function formatPace(durationMinutes: number, distanceKm?: number) {
