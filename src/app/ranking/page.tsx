@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Trophy, Medal, Crown, Loader2 } from "lucide-react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { useAuth } from "@/components/providers/AuthProvider";
 
@@ -23,10 +23,21 @@ export default function RankingPage() {
   const [weeklyUsers, setWeeklyUsers] = useState<RankingUser[]>([]);
   const [allTimeUsers, setAllTimeUsers] = useState<RankingUser[]>([]);
   const [loading, setLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchUsers = async () => {
+      if (!currentUser) {
+        setWeeklyUsers([]);
+        setAllTimeUsers([]);
+        setErrorMessage("Ranking indisponível.");
+        setLoading(false);
+        return;
+      }
       try {
+        setErrorMessage(null);
+        const userDocRef = doc(db, "users", currentUser.uid);
+        await getDoc(userDocRef);
         const usersRef = collection(db, "users");
         // Fetch all users and sort client-side to avoid index requirements for now
         // In a real large app, you'd use orderBy and limit with Firestore indexes
@@ -69,7 +80,14 @@ export default function RankingPage() {
         setWeeklyUsers(sortedWeekly);
         setAllTimeUsers(sortedAllTime);
       } catch (error) {
-        console.error("Error fetching ranking:", error);
+        const err = error as { code?: string };
+        if (err?.code === "permission-denied") {
+          setWeeklyUsers([]);
+          setAllTimeUsers([]);
+          setErrorMessage("Permissão insuficiente para carregar o ranking.");
+        } else {
+          console.error("Error fetching ranking:", error);
+        }
       } finally {
         setLoading(false);
       }
@@ -92,6 +110,14 @@ export default function RankingPage() {
         <h1 className="text-2xl font-bold tracking-tight">Ranking</h1>
         <p className="text-muted-foreground">Veja quem está treinando pesado!</p>
       </div>
+
+      {errorMessage && (
+        <Card>
+          <CardContent className="pt-6 text-center text-muted-foreground">
+            {errorMessage}
+          </CardContent>
+        </Card>
+      )}
 
       <Tabs defaultValue="weekly" className="w-full">
         <TabsList className="grid w-full grid-cols-2">
