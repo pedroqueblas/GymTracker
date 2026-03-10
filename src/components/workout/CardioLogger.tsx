@@ -83,7 +83,7 @@ export function CardioLogger() {
         <div className="space-y-4 py-4">
           <div className="space-y-2">
             <Label>Tipo de Atividade</Label>
-            <Select value={type} onValueChange={setType}>
+            <Select value={type} onValueChange={(v) => setType(v as CardioType)}>
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
@@ -119,7 +119,7 @@ export function CardioLogger() {
 
           <div className="space-y-2">
             <Label>Intensidade</Label>
-            <Select value={intensity} onValueChange={setIntensity}>
+            <Select value={intensity} onValueChange={(v) => setIntensity(v as CardioIntensity)}>
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
