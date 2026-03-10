@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useAuth } from "@/components/providers/AuthProvider";
 import { useAppStore } from "@/lib/store";
-import { db } from "@/lib/firebase";
+import { auth, db } from "@/lib/firebase";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 
 export function useUserDataSync() {
@@ -74,6 +74,9 @@ export function useUserDataSync() {
 
     const saveUserData = async () => {
       try {
+        const uid = user?.uid;
+        if (!uid) return;
+        if (auth.currentUser?.uid !== uid) return;
         // Calculate stats for ranking
         const totalVolume = workoutHistory.reduce((acc, w) => {
           return acc + w.exercises.reduce((exAcc, ex) => {
@@ -93,7 +96,7 @@ export function useUserDataSync() {
             }, 0);
           }, 0);
 
-        const userDocRef = doc(db, "users", user.uid);
+        const userDocRef = doc(db, "users", uid);
         await setDoc(userDocRef, {
           workoutHistory,
           customPlans,
