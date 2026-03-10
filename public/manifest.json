@@ -2,13 +2,25 @@
   "name": "Queblas-GymApp",
   "short_name": "GymApp",
   "description": "Seu companheiro de treino inteligente",
-  "start_url": "/",
+  "start_url": "/?source=pwa",
   "scope": "/",
   "display": "fullscreen",
   "display_override": ["fullscreen", "standalone", "minimal-ui"],
   "background_color": "#0D1B2A",
   "theme_color": "#0D1B2A",
   "icons": [
+    {
+      "src": "/globe.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/window.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
     {
       "src": "/favicon.ico",
       "sizes": "64x64",

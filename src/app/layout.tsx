@@ -21,6 +21,11 @@ export const metadata: Metadata = {
   title: "Queblas-GymApp",
   description: "Seu companheiro de treino inteligente",
   manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Queblas-GymApp",
+  },
   icons: {
     icon: "/favicon.ico",
     apple: "/favicon.ico"
@@ -29,6 +34,9 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: "#0d1b2a",
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
