@@ -184,9 +184,9 @@ function ExerciseDetailItem({ log }: { log: ExerciseLog }) {
         </span>
       </div>
       <div className="flex flex-wrap gap-2">
-        {completedSets.map((set) => (
+        {completedSets.map((set, i) => (
           <div
-            key={set.id}
+            key={(set as { id?: string }).id ?? `${log.id}-${i}`}
             className="text-xs text-muted-foreground bg-background px-1.5 py-0.5 rounded border"
           >
             {set.weight}kg x {set.reps}

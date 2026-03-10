@@ -3,7 +3,7 @@
 import { useAppStore } from "@/lib/store";
 import { GlassCard } from "@/components/ui/glass-card";
 import { Button } from "@/components/ui/button";
-import { Dumbbell, Flame, Trophy, Play, Droplets, Plus, Minus, Settings, ChevronRight } from "lucide-react";
+import { Dumbbell, Flame, Trophy, Play, Droplets, Plus, Minus, Settings, ChevronRight, CalendarDays } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
@@ -219,6 +219,21 @@ export default function Home() {
             </GlassCard>
           </Link>
           
+          <Link href="/history">
+            <GlassCard className="p-4 flex items-center justify-between hover:bg-white/5 transition-colors group">
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center text-white">
+                  <CalendarDays className="h-5 w-5" />
+                </div>
+                <div>
+                  <h4 className="font-semibold">Histórico</h4>
+                  <p className="text-xs text-muted-foreground">Ver treinos concluídos</p>
+                </div>
+              </div>
+              <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-white transition-colors" />
+            </GlassCard>
+          </Link>
+
           <Link href="/plans">
             <GlassCard className="p-4 flex items-center justify-between hover:bg-white/5 transition-colors group">
               <div className="flex items-center gap-3">

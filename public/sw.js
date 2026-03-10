@@ -1,5 +1,5 @@
-const CACHE_NAME = "gymtracker-v1";
-const ASSETS = ["/", "/manifest.json", "/favicon.ico"];
+const CACHE_NAME = "gymtracker-v2";
+const ASSETS = ["/", "/favicon.ico"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -30,6 +30,11 @@ self.addEventListener("fetch", (event) => {
   if (request.method !== "GET") return;
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
+
+  if (url.pathname === "/manifest.json" || url.pathname === "/sw.js") {
+    event.respondWith(fetch(request));
+    return;
+  }
 
   if (request.mode === "navigate") {
     event.respondWith(
